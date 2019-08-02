@@ -11,13 +11,30 @@
   // Note: remember to fix the URL below.
   /////////////////////////////////////////////////////////////////////
 
+  const ajaxFileDownload = (file) => {
+    var formData = new FormData();
+    formData.append('file', file);
+    $.ajax({
+      type: 'GET',
+      data: formData,
+      url: 'http://127.0.0.1:3000',
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: () => {
+        // reload the page
+        window.location = window.location.href;
+      }
+    });
+  };
+
   const ajaxFileUplaod = (file) => {
     var formData = new FormData();
     formData.append('file', file);
     $.ajax({
       type: 'POST',
       data: formData,
-      url: 'FILL_ME_IN',
+      url: 'http://127.0.0.1:3000',
       cache: false,
       contentType: false,
       processData: false,
