@@ -19,6 +19,8 @@ const randomizeDirection = function() {
   return dirs[dirIndex];
 }
 
+
+
 module.exports.router = (req, res, next = ()=>{}) => {
   console.log('Serving request type ' + req.method + ' for url ' + req.url);
   if (req.method === 'OPTIONS') {
@@ -26,15 +28,15 @@ module.exports.router = (req, res, next = ()=>{}) => {
     res.writeHead(200, headers);
     res.end();
   } else if (req.method === 'GET') {
-    console.log('get successful');
     res.writeHead(200, headers);
-    res.end('hello');
+    res.write(randomizeDirection());
+    res.end();
   } else {
     console.log('get failed')
-    console.log(req.method);
+    // console.log(req.method);
     res.writeHead(404, headers);
     res.end();
   }
-
   next(); // invoke next() at the end of a request to help with testing!
 };
+

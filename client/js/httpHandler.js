@@ -6,6 +6,16 @@
   // TODO: build the swim command fetcher here
   //
 
+  const fetch = () => {
+    // when the page is refreshed
+    // send get request to server to fetch direction
+      $.get(serverUrl, (direction) => {
+        SwimTeam.move(direction);
+      });
+  };
+
+  fetch();
+
   /////////////////////////////////////////////////////////////////////
   // The ajax file uplaoder is provided for your convenience!
   // Note: remember to fix the URL below.
@@ -15,22 +25,9 @@
     var formData = new FormData();
     formData.append('file', file);
     $.ajax({
-      type: 'GET',
-      data: formData,
-      url: 'http://127.0.0.1:3000',
-      cache: false,
-      contentType: false,
-      processData: false,
-      success: () => {
-        console.log('success');
-        // reload the page
-        window.location = window.location.href;
-      }
-    });
-    $.ajax({
       type: 'POST',
       data: formData,
-      url: 'http://127.0.0.1:3000',
+      url: serverUrl,
       cache: false,
       contentType: false,
       processData: false,
