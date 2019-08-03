@@ -26,10 +26,11 @@ module.exports.router = (req, res, next = ()=>{}) => {
     res.writeHead(200, headers);
     res.end();
   } else if (req.method === 'GET') {
-    console.log(randomizeDirection());
+    console.log('get successful');
     res.writeHead(200, headers);
-    res.end();
+    res.end('hello');
   } else {
+    console.log('get failed')
     console.log(req.method);
     res.writeHead(404, headers);
     res.end();
