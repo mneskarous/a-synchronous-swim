@@ -11,7 +11,7 @@
   // Note: remember to fix the URL below.
   /////////////////////////////////////////////////////////////////////
 
-  const ajaxFileDownload = (file) => {
+  const ajaxFileUplaod = (file) => {
     var formData = new FormData();
     formData.append('file', file);
     $.ajax({
@@ -22,15 +22,11 @@
       contentType: false,
       processData: false,
       success: () => {
+        console.log('success');
         // reload the page
         window.location = window.location.href;
       }
     });
-  };
-
-  const ajaxFileUplaod = (file) => {
-    var formData = new FormData();
-    formData.append('file', file);
     $.ajax({
       type: 'POST',
       data: formData,

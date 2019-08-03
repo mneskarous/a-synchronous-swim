@@ -25,7 +25,7 @@ describe('server responses', () => {
     httpHandler.swimCommand = path.join();    //input parameter later
     let {req, res} = server.mock('/', 'GET');
     httpHandler.router(req, res, () => {
-      expect(res._responseCode).to.equal(true);
+      expect(res._responseCode).to.equal(200);
       expect(res._ended).to.equal(true);
       done();
     });
