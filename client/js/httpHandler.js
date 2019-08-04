@@ -2,7 +2,6 @@
 
   const serverUrl = 'http://127.0.0.1:3000';
 
-
   // The swim command fetcher here
   const fetch = () => {
     // when the page is refreshed
@@ -14,7 +13,7 @@
         SwimTeam.move(direction)
       },
       complete: () => {
-        setTimeout(fetch, 100);
+        setTimeout(fetch, 1000);
       }
     });
   };

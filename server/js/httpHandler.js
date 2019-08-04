@@ -8,13 +8,12 @@ module.exports.backgroundImageFile = path.join('.', 'background.jpg');
 ////////////////////////////////////////////////////////
 var http = require('http');
 
-let messageQueue = null;
+let messageQueue = require('./messageQueue');
 module.exports.initialize = (queue) => {
   messageQueue = queue;
 };
 
 module.exports.router = (req, res, next = ()=>{}) => {
-  console.log('Serving request type ' + req.method + ' for url ' + req.url);
   if (req.method === 'OPTIONS') {
     res.writeHead(200, headers);
     res.end();
@@ -24,10 +23,9 @@ module.exports.router = (req, res, next = ()=>{}) => {
     // create array of commands
     const directions = ['up', 'down', 'left', 'right'];
     // randomize index
-    var index = Math.floor(Math.random() * 4);
+    let index = Math.floor(Math.random() * 4);
 
     res.writeHead(200, headers);
-    // console.log('get got');
     // respond with a random command
     // res.end(directions[index]);
     // dequeue the messagedown
