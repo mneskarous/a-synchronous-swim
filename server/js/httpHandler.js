@@ -19,18 +19,35 @@ module.exports.router = (req, res, next = ()=>{}) => {
     res.end();
     next(); // invoke next() at the end of a request to help with testing!
   }
-  if (req.method === 'GET') {
-    // create array of commands
-    const directions = ['up', 'down', 'left', 'right'];
-    // randomize index
-    let index = Math.floor(Math.random() * 4);
 
-    res.writeHead(200, headers);
-    // respond with a random command
-    // res.end(directions[index]);
-    // dequeue the messagedown
-    res.end(messageQueue.dequeue());
-    next();
+  if (req.method === 'GET') {
+    if (req.url === '/') {
+
+      // create array of commands
+      // const directions = ['up', 'down', 'left', 'right'];
+      // randomize index
+      // let index = Math.floor(Math.random() * 4);
+
+      res.writeHead(200, headers);
+
+      // respond with a random command
+      // res.end(directions[index]);
+
+      // dequeue the messagedown
+      res.end(messageQueue.dequeue());
+      next();
+    } else if (req.url === '/background.jpg') {
+      fs.readFile(module.exports.backgroundImageFile, (err, data) => {
+        if (err) {
+          res.writeHead(404, headers);
+        } else {
+          res.writeHead(200, headers);
+          res.write(data, 'binary');
+        }
+        res.end();
+        next();
+      })
+    }
   }
 };
 
