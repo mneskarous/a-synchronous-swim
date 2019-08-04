@@ -9,13 +9,4 @@ $('body').on('keydown', (event) => {
   console.log('Key pressed');
 });
 
-$("button").on("click", (event) => {
-  $.get('http://127.0.0.1:3000'), (direction) => {
-
-    // console.log(randomizeDirection());
-    // console.log(SwimTeam.move(direction));
-  }
-});
-
-
 console.log('Client is running in the browser!');
