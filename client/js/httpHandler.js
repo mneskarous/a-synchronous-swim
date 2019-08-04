@@ -13,7 +13,7 @@
         SwimTeam.move(direction)
       },
       complete: () => {
-        setTimeout(fetch, 1000);
+        // setTimeout(fetch, 1000);
       }
     });
   };
